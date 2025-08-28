@@ -1,0 +1,10 @@
+RewriteEngine on
+
+#ROUTE des posts
+if(isset($_GET['post'])):
+    include_once '../app/routers/post.php';
+
+#post.show
+#URL: post/id/slug
+#PATERN: ?post=show&id=x
+RewriteRule  ^post/([1-9][0-9]*)/[a-z0-9][a-z0-9\-]*$ index.php?posts=show&id=$1 [L]

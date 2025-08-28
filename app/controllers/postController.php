@@ -14,3 +14,13 @@ function indexAction(PDO $conn): void
     $content = ob_get_clean();
 }
 
+function showAction(PDO $conn): void
+{
+    include_once '../app/models/postModel.php';
+    $posts = PostModel\findOneById($conn, $id);
+    global $content, $title;
+    $title = $post['title'];
+    ob_start();
+    include '../app/views/posts/show.php';
+    $content = ob_get_clean();
+}
